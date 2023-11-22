@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   IonBackButton,
   IonButtons,
@@ -11,33 +11,23 @@ import {
   useIonViewWillEnter,
 } from '@ionic/react';
 import { useParams } from 'react-router';
+import { Joueur, getJoueurEquipe } from '../data/joueurs';
+import { Equipe, getEquipe } from '../data/equipes';
 import JoueurListItem from '../components/JoueurListItem';
 
 function ViewEquipe() {
   const [equipe, setEquipe] = useState<Equipe>();
-  const [joueurs, setJoueurs] = useState<Joueur[]>();
+  const [joueurs, setJoueurs] = useState<Joueur[]>(); // Updated to use Joueur[]
 
   const params = useParams<{ id_equipe: string }>();
-
-  const fetchJoueursData = async () => {
-    try {
-      const response = await fetch(`https://example.com/api/equipes/${params.id_equipe}/joueurs`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const joueursData = await response.json();
-      setJoueurs(joueursData);
-    } catch (error) {
-      console.error('Error fetching joueurs data:', error);
-    }
-  };
 
   useIonViewWillEnter(() => {
     const equipeData = getEquipe(params.id_equipe);
     setEquipe(equipeData);
 
     if (equipeData) {
-      fetchJoueursData();
+      const joueursData = getJoueurEquipe(params.id_equipe); // Assuming this returns Joueur[]
+      setJoueurs(joueursData);
     }
   });
 
@@ -76,5 +66,3 @@ function ViewEquipe() {
     </IonPage>
   );
 }
-
-export default ViewEquipe;
