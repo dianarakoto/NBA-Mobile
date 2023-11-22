@@ -15,7 +15,7 @@ import { Joueur, getJoueurEquipe } from '../data/joueurs';
 import { Equipe, getEquipe } from '../data/equipes';
 import JoueurListItem from '../components/JoueurListItem';
 
-function ViewEquipe() {
+function ViewPlayer() {
   const [equipe, setEquipe] = useState<Equipe>();
   const [joueurs, setJoueurs] = useState<Joueur[]>(); // Updated to use Joueur[]
 
@@ -66,3 +66,5 @@ function ViewEquipe() {
     </IonPage>
   );
 }
+
+export default ViewPlayer;
