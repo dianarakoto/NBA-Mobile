@@ -1,0 +1,21 @@
+/* MessageListItem.css */
+
+/* Flex container for side-by-side layout */
+.ion-item-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the image */
+  .ion-item-content img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  /* Style for the text */
+  .ion-item-content h2 {
+    font-weight: bold;
+    margin: 0; /* Remove default margin */
+  }
+  

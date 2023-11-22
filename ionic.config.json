@@ -1,0 +1,7 @@
+{
+  "name": "NBA-Stat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
